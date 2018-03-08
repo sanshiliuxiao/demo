@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+  <style>
+    body {
+  font: 12px/1.5 italic serif;
+  color : blue;
+  position: relative;
+  
+  
+}
+p:nth-of-type(2){
+  /*下面是不可继承的属性*/
+  width : 200px;
+  height : 200px;
+  border : 1px #2c171b solid;
+  margin: 10px;
+  padding: 10px;
+  position: relative;
+  top : 10px;
+  left : 20px;
+  /*下面是可继承的属性*/
+  font-size:1.2em;
+  font-style: italic;
+  color : pink;
+  text-decoration: underline;
+  
+}
+em {
+  
+  background-color: red;
+  color : pink;
+  /*这是的单词空隙，是根据英文单词产生的*/
+  word-spacing: 10px;
+  text-align: right;
+  
+  
+}
+  </style>
+</head>
+<body>
+    <strong>
+      每一个css属性定义的概述都指出这个属性是默认继承的("Inherited : Yes")，
+      还是不继承的("Inherited : No")。 这决定当你没有为元素的属性指定值时该如何计算值。 
+      当元素的一个继承属性（Inheritedproperty）
+      没有指定值时，则取父元素的同属性的计算值（computed value）。 
+    </strong>
+     <p>来自父元素body的部分继承</p>
+      <p>测试测试测试 <br>
+         <span>嵌套在块元素p的内联元素span，部分继承其父元素p的继承</span>
+        <div>嵌套在块元素p的块元素div，不继承当前其父元素的属性</div>
+     </p>
+  
+    <em>
+      内联元素em 
+      <span>嵌套在内联元素em中的内联元素span</span>
+      内联元素不能嵌套块级元素，除非将内联元素变成块级元素。
+    </em>
+</body>
+</html>
