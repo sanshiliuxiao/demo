@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>homework-7-11</title>
+  <style>
+    .box {
+      margin:  20px;
+      width: 0;
+      height: 0;
+      border-top: 50px solid rgb(6, 0, 255);
+      border-right: 50px solid rgb(255, 255, 0);
+      border-left: 50px solid rgb(255, 4, 0);
+      border-bottom: 50px solid rgb(0, 139, 0);
+    }
+    .box.t-tg {
+      /*顶部小三角*/
+      border-left: 50px solid transparent;
+      border-right: 50px solid transparent;
+      border-bottom: 50px solid transparent;
+    }
+    .box.l-tg {
+      border-top: 50px solid transparent;
+      border-right: 50px solid transparent;
+      border-bottom: 50px solid transparent;
+    }
+    .box.r-tg {
+      border-top: 50px solid transparent;
+      border-left: 50px solid transparent;
+      border-bottom: 50px solid transparent;
+    }
+    .box.b-tg {
+      border-top: 50px solid transparent;
+      border-left: 50px solid transparent;
+      border-right: 50px solid transparent;
+    }
+    .l-b-tg {
+      border-top: 35px solid transparent;
+      border-right: 35px solid transparent;
+      border-left: 35px solid rgb(255, 4, 0);
+      border-bottom: 35px solid rgb(255, 4, 0);
+    }
+    .t-b-tg {
+      border-top: 35px solid transparent;
+      border-right: 35px solid rgb(0, 139, 0); 
+      border-left: 35px solid  transparent;
+      border-bottom: 35px solid rgb(0, 139, 0);
+    }
+  </style>
+</head>
+<body>
+  <div class="layout">
+    <div class="box"></div>
+    <div class="box t-tg"></div>
+    <div class="box l-tg"></div>
+    <div class="box r-tg"></div>
+    <div class="box b-tg"></div>
+    <div class="box l-b-tg"></div>
+    <div class="box t-b-tg"></div>
+  </div>
+</body>
+</html>
