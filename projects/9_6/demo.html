@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>homework_9_6</title>
+  <style>
+  .layout{
+    width: 600px;
+    margin:0 auto;
+  }
+	.alert {
+	color: #fff;
+	margin-top: 30px;
+	padding: 1px 16px;
+	border: 1px solid red;
+	line-height: 1.5;
+	border-radius: 3px;
+	position: relative;
+	}
+  .alert h3{
+	font-size: 24px;
+	font-weight: bold;
+	margin: 10px 0;
+	}
+  .alert.success {
+	background-color: #4caf50;
+	}
+  .alert.info {
+	background-color:#2196f3;
+	}
+  .alert.danger {
+	background-color: #f44336;
+  }
+  .alert.warning{
+	background-color:#ff9800;
+  }
+
+  span.close{
+	position: absolute;
+	top: 2px;
+	right : 10px;
+	font-size: 20px;
+	font-weight: bold;
+	color: inherit;
+	cursor: pointer;
+  }
+  </style>
+</head>
+<body>
+  <div class="layout">
+    <div class="alert success">
+      <h3>恭喜你</h3>
+      <p>获得本周学霸，继续加油吧</p>
+      <span class="close">x</span>
+    </div>
+    <div class="alert info">
+      <h3>通知</h3>
+      <p>晚上上课，不要忘了</p>
+      <span class="close">x</span>
+    </div>
+    <div class="alert danger">
+      <h3>天啊</h3>
+      <p>竟然几天没做任务</p>
+      <span class="close">x</span>
+    </div>
+    <div class="alert warning">
+      <h3>警告</h3>
+      <p>学如逆水行舟，不进则退</p>
+      <span class="close">x</span>
+    </div>
+  </div>
+</body>
+</html>
