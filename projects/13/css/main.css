@@ -1,0 +1,223 @@
+/* reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+a {
+  text-decoration: none;
+}
+ul {
+  list-style-type: none;
+}
+
+/* common */
+.clearfix::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+body {
+  font: 14px/1.5 Arial;
+  background-color: #eee;
+  color: #444;
+}
+.button {
+  display: inline-block;
+  font-size: 18px;
+  color: #fff;
+  background-color: #6d4c41;
+  padding: 5px 10px;
+  border-radius: 4px;
+}
+.button:hover {
+  opacity: 0.6;
+}
+/*  */
+html, body {
+  height: 100%;
+  overflow: scroll;
+}
+header {
+  /*给绝对定位添加一个定位基准*/
+  position: relative;
+  min-height: 600px;
+  height: 100%;
+  background: url(../images/header.jpg) center center no-repeat;
+  background-size: cover;
+}
+
+header .logo{
+  /*浮动元素 会使行内元素拥有块级特性*/
+  margin-top: 20px;
+  color: #455a64;
+  font-size: 32px;
+  float: left;
+}
+header .nav {
+  margin-top: 20px;
+  float: right;
+}
+header .nav > li {
+  float: left;
+}
+header .nav a {
+  padding: 10px;
+  margin: 10px;
+  color: #455a64;
+  font-size: 16px;
+  font-weight: bold;
+}
+header .nav a:hover {
+  border-radius: 4px;
+  background-color: #9755cd;
+}
+header .intro {
+  font-weight: bold;
+  color: #455a64;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+header .intro h1 {
+  font-size: 28px;
+}
+header .intro h2 {
+  margin-top: 10px;
+  font-size: 30px;
+}
+header .intro .button {
+  margin: 10px;
+}
+
+section {
+  margin-top: 15px;
+  text-align: center;
+}
+.intro h2 {
+  font-size:  28px;
+}
+.intro p {
+  margin: 10px;
+  font-size: 20px;
+}
+.menber figure {
+  width: 33.33%;
+  height:  300px;
+  padding: 20px 15px;
+  float: left;
+  overflow: hidden;
+}
+.menber a {
+  width: 40%;
+  display: block;
+  float: left;
+  padding-right: 20px;
+}
+.menber img {
+  width: 100%;
+  height: 100%;
+}
+.menber figcaption {
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 5px;
+}
+.menber p {
+  color: #666;
+}
+
+.music li {
+  margin-top: 40px;
+  position: relative;
+}
+.music li::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+.music img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 3px solid lightblue;
+}
+.music dl {
+  margin-right: 120px;
+}
+.music dl > dt {
+  font-size:  20px;
+  font-weight: bold;
+  color: #7986cb;
+}
+.music dl > dd {
+  color: 0277bd;
+}
+.music li:nth-child(odd){
+  padding-right: calc(50%  - 40px);
+  text-align: right;
+}
+.music li:nth-child(odd) img{
+  float: right;
+}
+.music li:nth-child(odd) dl {
+  padding-right: 20px;
+}
+.music li:nth-child(even){
+  padding-left: calc(50%  - 40px);
+  text-align: left;
+}
+.music li:nth-child(even) img{
+  float: left;
+}
+.music li:nth-child(even) dl {
+  padding-left: 120px;
+}
+.music  li::before {
+  content: "";
+  display: block;
+  height: 40px;
+  width: 2px;
+  background-color: lightblue;
+  position: absolute;
+  left: 50%;
+  top: 100px;
+}
+.music  li:last-child::before {
+  height: 0;
+}
+
+footer {
+  position: relative;
+  height: 400px;
+  margin-top: 20px;
+  text-align: center;
+  background: url(../images/change.png) center center no-repeat;
+  background-size: cover;
+}
+
+footer  h2 {
+  position: absolute;
+  width: 200px;
+  top: 40px;
+  left: calc(50% - 100px);
+}
+
+footer .button {
+  display: block;
+  position: absolute;
+  width: 200px;
+  bottom: 40px;
+  left: calc(50% - 100px);
+}
+
+
+
+
+
+
+
+
+
