@@ -198,13 +198,6 @@ footer {
   background-size: cover;
 }
 
-footer  h2 {
-  position: absolute;
-  width: 200px;
-  top: 40px;
-  left: calc(50% - 100px);
-}
-
 footer .button {
   display: block;
   position: absolute;
