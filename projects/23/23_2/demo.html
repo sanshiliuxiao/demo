@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>homework_23_2</title>
+</head>
+<body>
+  <ul class="ct">
+    <li>这里是</li>
+    <li>饥人谷</li>
+    <li>任务班</li>
+    </ul>
+    <input class="ipt-add-content" placeholder="添加内容"/>
+    <button id="btn-add-start">开头添加</button>
+    <button id="btn-add-end">结尾添加</button>
+
+    <script>
+      var input_context = document.querySelector('.ipt-add-content');
+      var start_add = document.querySelector('#btn-add-start');
+      var end_add = document.querySelector('#btn-add-end');
+      var oldUl = document.querySelector('.ct');
+
+      start_add.onclick = function(){ 
+        if (input_context.value != '') {
+          var newLi = document.createElement('li');
+          var newContent = document.createTextNode(input_context.value);
+          newLi.appendChild(newContent);
+          console.log(newLi);
+          //在头部添加
+          oldUl.insertBefore(newLi, oldUl.firstChild);
+        } 
+      }
+      end_add.onclick = function(){
+        if (input_context.value != '') {
+          var newLi = document.createElement('li');
+          var newContent = document.createTextNode(input_context.value);
+          newLi.appendChild(newContent);
+          console.log(newLi);
+          // 在尾部添加
+          oldUl.appendChild(newLi);
+        }
+      }
+    </script>
+</body>
+</html>

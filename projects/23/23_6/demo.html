@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>homework_23_6</title>
+  <style>
+    .layout{
+      width: 600px;
+      height: 300px;
+      background: #0c90bb;
+      text-align: center;
+      padding: 20px 10px;
+    }
+    .box {
+      width: 100%;
+      height: 40%;
+      background: rgba(249,223, 205, 0.5);
+    }
+    .active {
+      background-image: url(1.jpg);
+      background-position: center center;
+      background-size : contain; 
+      background-repeat: no-repeat;
+      
+      color: #ccc;
+    }
+    button {
+      margin: 20px 2px;;
+      background: rgba(249,223, 205, 0.5);
+    }
+  </style>
+</head>
+<body>
+  <div class="layout">
+    <div class="box">
+        <h1>记录的地平线</h1>
+        <p>《记录的地平线》是轻小说家橙乃真希著作，插画家原和弘负责插画，Fami通文库所属的轻小说。</p>
+        <button id="addBtn">add</button>
+        <button id="removeBtn">remove</button>
+        <button id="toggleBtn1">toggle1</button>
+        <button id="toggleBtn2">toggle2</button>
+      </div>
+  </div>
+  <script>
+    var addBtn = document.querySelector('#addBtn');
+    var removeBtn = document.querySelector('#removeBtn');
+    var toggleBtn1 = document.querySelector('#toggleBtn1');
+    var toggleBtn2 = document.querySelector('#toggleBtn2');
+    var box = document.querySelector('.box');
+
+    addBtn.onclick = function() {
+      box.classList.add('active');
+    }
+    removeBtn.onclick = function() {
+      box.classList.remove('active');
+    }
+    toggleBtn1.onclick = function() {
+      if(box.classList.contains('active')) {
+        box.classList.remove('active');
+      } else {
+        box.classList.add('active');
+      }
+    }
+    toggleBtn2.onclick = function() {
+      box.classList.toggle('active');
+    }
+  </script>
+</body>
+</html>

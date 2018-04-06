@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>homewok_23_1</title>
+  <style>
+  img {
+    width: 200px;
+    height:  100px;
+  }
+  </style>
+</head>
+<body>
+  <ul class="ct">
+    <!--  这里的data-img   居然用的是中横线。。。-->
+    <li data-img="1.png">鼠标放置查看图片1</li >  
+    <li data-img="2.png">鼠标放置查看图片2</li>
+    <li data-img="3.png">鼠标放置查看图片3</li>
+</ul>
+<div class="img-preview"></div>
+<script>
+  var li_img = document.querySelectorAll('.ct li');
+  for (var i=0; i<li_img.length; ++i) {
+    li_img[i].setAttribute('onmouseover', 'view(this)');
+  }
+  
+  function view(elem) {
+    var img_path = elem.getAttribute('data-img');
+    var img_pre = document.querySelector('.img-preview img') 
+    if (img_pre == null){
+      var img_par = document.querySelector('.img-preview');
+      var img = document.createElement('img');
+      img.src = img_path;
+      img_par.appendChild(img);
+    } else {
+      img_pre.src = img_path;
+    }
+  }
+</script>
+</body>
+</html>

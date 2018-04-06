@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>homework_23_3</title>
+</head>
+<body>
+  <ul class="ct">
+    <li>这里是</li>
+    <li>饥人谷</li>
+    <li>前端14班</li>
+  </ul>
+  <script>
+   
+    var li_all = document.querySelectorAll("li");
+    console.log(li_all);
+    for (var i=0; i<li_all.length; ++i){
+      li_all[i].setAttribute('onclick', 'console_view(this)');
+    }
+    function console_view(elem) {
+      console.log(elem.innerHTML);
+    }
+  </script>
+</body>
+</html>
