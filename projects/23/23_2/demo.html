@@ -27,21 +27,32 @@
           var newLi = document.createElement('li');
           var newContent = document.createTextNode(input_context.value);
           newLi.appendChild(newContent);
-          console.log(newLi);
-          //在头部添加
           oldUl.insertBefore(newLi, oldUl.firstChild);
         } 
-      }
+      };
       end_add.onclick = function(){
         if (input_context.value != '') {
           var newLi = document.createElement('li');
           var newContent = document.createTextNode(input_context.value);
           newLi.appendChild(newContent);
-          console.log(newLi);
-          // 在尾部添加
           oldUl.appendChild(newLi);
         }
+      };
+
+      function addEventHandler (oTarget, sEventType, fnHandler){
+        if (oTarget.addEventListener){
+          oTarget.addEventListener(sEventType,fnHandler);
+        } else if (oTarget.attachEvent) {
+          oTarget.attachEvent("on" + sEventType, fnHandler);
+        } else {
+          oTarget['on'+sEventType] = fnHandler;
+        }
       }
+      function fnHandler (e){
+        var t = e.target || e.srcElement // 目标对象
+        console.log(t.innerHTML);
+      }
+      addEventHandler(document.querySelector('.ct'), 'click', fnHandler);
     </script>
 </body>
 </html>
