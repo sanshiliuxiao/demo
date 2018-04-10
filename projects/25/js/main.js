@@ -82,3 +82,19 @@ $('.modal-register form').addEventListener('submit', function(e){
   this.submit();
 })
 
+// 是否播放音乐
+$('footer .btn').addEventListener('click', function(e){
+  e.stopPropagation();
+  var audio = $('footer audio');
+  if (audio !=null) {
+    if(!audio.paused) {
+      audio.pause();
+      $('footer .btn').classList.remove('fa-pause');
+      $('footer .btn').classList.add('fa-play');
+    } else if (audio.paused){
+      audio.play();
+      $('footer .btn').classList.remove('fa-play');
+      $('footer .btn').classList.add('fa-pause');
+    }
+  }
+})
