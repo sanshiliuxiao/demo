@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>登录|注册</title>
+  <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/common.css">
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+  <header>
+    <a href="#" class="login"><i class="fa  fa-genderless"></i></a>
+  </header>
+  <main>
+    <div class="flip-modal login">
+      <div class="modal modal-login">
+        <a href="#" class="close fa fa-close"></a>
+        <div class="tabs">
+          <a href="#" class="login active">登录</a>
+          <a href="#" class="register">注册</a>
+        </div>
+        <div class="content">
+          <div class="errormsg"></div>
+          <form action="/login" method="post">
+            <div class="input-field">
+              <i class="fa fa-user-o"></i>
+              <input type="text" name="username" placeholder="用户名">
+            </div>
+            <div class="input-field">
+              <i class="fa fa-lock"></i>
+              <input type="password" name="password" placeholder="密码"> 
+            </div>
+            <div class="input-field">
+              <input type="submit" value="登录">
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="modal modal-register">
+        <a href="#" class="close fa fa-close"></a>
+        <div class="tabs">
+          <a href="#" class="login ">登录</a>
+          <a href="#" class="register active">注册</a>
+        </div>
+        <div class="content">
+          <div class="errormsg"></div>
+          <form action="/register" method="post">
+            <div class="input-field">
+              <i class="fa fa-user-o"></i>
+              <input type="text" name="username" placeholder="用户名">
+            </div>
+            <div class="input-field">
+              <i class="fa fa-lock"></i>
+              <input type="password" name="password1" placeholder="密码">
+            </div>
+            <div class="input-field">
+              <i class="fa fa-lock"></i>
+              <input type="password" name="password2" placeholder="再输入一次密码">
+            </div>
+            <div class="input-field">
+              <input type="submit" value="注册">
+            </div>
+          </form>
+        </div>
+    </div>
+  </main>
+  <footer>
+    12323
+    <audio src="./music/bgm.mp3"  buffered loop autoplay=true controls volume=0.3></audio>
+  </footer>
+  <script src="js/main.js"></script>
+</body>
+</html>
