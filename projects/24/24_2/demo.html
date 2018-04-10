@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>14_2</title>
+  <style>
+    .container,
+    .box,
+    .target1,
+    .target2 {
+      padding: 10px ;
+      border: 2px solid;
+      margin: 10px;
+    }
+    .container {
+      width:  500px;
+      margin: 10px auto;
+      background: yellow;
+    }
+    .box {
+      background: green;
+    }
+    .target1 {
+      background: red;
+    }
+    .target2 {
+      background: blue;
+    }
+  </style>
+
+</head>
+<body>
+  <div class="container">
+      container
+    <div class="box">
+      box
+      <div class="target1">target1</div>
+      <div class="target2">target2</div>
+    </div>
+  </div>  
+  <script>
+    function $(select) {
+      return document.querySelector(select);
+    }
+    // 捕获阶段
+    $('.container').addEventListener('click', function(e){
+      console.log('container click... in 哇，捕获阶段');
+    },true);
+    $('.box').addEventListener('click', function(e){
+      console.log('box click...in 哇，捕获阶段');
+    },true);
+    $('.target1').addEventListener('click', function(e){
+      console.log('target1 click... in 哇，捕获阶段');
+    },true);
+    $('.target2').addEventListener('click', function(e){
+      console.log('target2 click... in 哇，捕获阶段');
+    },true);
+
+    //冒泡阶段
+    $('.container').addEventListener('click', function(e){
+      console.log('container click... in 冒泡阶段');
+    },false);
+    $('.box').addEventListener('click', function(e){
+      console.log('box click...in 冒泡阶段');
+    },false);
+    $('.target1').addEventListener('click', function(e){
+      console.log('target1 click... in 冒泡阶段');
+    },false);
+
+    // 阻止传播
+    $('.target2').addEventListener('click', function(e){
+      console.log('target2 click... in 冒泡阶段');
+      e.stopPropagation();
+      console.log('哇，我被阻止冒泡了，伤心');
+    },false);
+  </script> 
+</body>
+</html>
