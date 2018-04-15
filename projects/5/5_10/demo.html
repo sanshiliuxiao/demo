@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>5_10</title>
+  <style>
+    body {
+  font-size: 20px; 
+}
+input[type=radio],
+input[type=checkbox]
+{
+  display:none;
+  opacity: 0;
+}
+input[type=radio]+label:before
+{
+  line-height: 1em;
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  border-radius: 1em;
+  margin-right: 10px;
+  font-size: 20px;
+  /*如果内容中没有文字，只有一对双引号，那么会产生异常（为勾选的框体紧贴父级，够选的框体与父级有间距），所以设定一个点号，并且设定字体颜色与背景颜色相同，以此达到勾选前后一致的效果*/
+  content: ".";
+  color: rgb(255, 255, 255);
+  barder: 1px solid #dce4e6;
+  border: 1px solid black;
+  background-color: rgb(255, 255, 255);
+  text-align: center;
+}
+
+input[type=radio]:checked+label:before {
+  content:"\2022";
+  color:rgb(220, 235, 251);
+  background-color: rgb(53, 147, 245);
+  font-size: 1em;
+  text-align: center;
+}
+
+input[type=checkbox]+label:before {
+  line-height: 20px;
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  border-radius: 0.2em;
+  margin-right: 5px;
+  content: ".";
+  color: rgb(255, 255, 255);
+  text-align: center;
+  border: 1px solid black;
+  background-color: rgb(255, 255, 255);
+}
+input[type=checkbox]:checked+label:before{
+  content:"\2713";
+  color: rgb(220, 235, 251);
+  background-color: rgb(53, 147, 245);
+  font-size: 1em;
+  text-align: center;
+  border-color: #31b968;
+  margin-bottom: 2px;
+}
+.comment textarea {
+  width: 30em;
+  height: 10em;
+}
+/*效果做出不出 */
+input[type=submit]{
+  outline:none;
+  width:4em;
+  height: 2em;
+  padding: 0;
+  border-color: #fff;
+  background-color:rgb(255, 255, 255);
+}
+  </style>
+</head>
+<body>
+  <from action="/" method="post">
+    <div class="username">
+      <label for="username" >姓名：</label>
+      <input type="text" id="username" placeholder="用户名">
+    </div>
+    <div class="password">
+      <label for="password">密码：</label>
+      <input type="password" id="password" placeholder="******">
+    </div>
+    <div class="sex">
+      <label>性别：</label>
+      <input type="radio" name="sex" value="男" id="male"> 
+      <label for="male">男</label>
+      <input type="radio" name="sex" value="女" id="female"> 
+      <label for="female">女</label>
+    </div>
+    <div class="sex-to">
+      <label>取向： </label>
+      <input type="radio" name="sex-to" value="男" id="to-male" > 
+      <label for="to-male">男</label>
+      <input type="radio" name="sex-to" value="女"id="to-female"> 
+      <label for="to-female">女</label>
+    </div>
+    <div class="hobby">
+      <label>爱好：</label>
+      <input type="checkbox" name="hobby" value="data" id="data"> 
+      <label for="data">data</label>
+      <input type="checkbox" name="足球" value="football" id="football">
+      <label for="football">足球</label>
+      <input type="checkbox" name="hobby" value="旅游" id="travel">
+       <label for="travel">旅游</label>
+    </div>
+    <div class="comment">
+      <label for="comment">评论</label>
+      <textarea name="comment" maxlength="500" id="comment" placeholder="在此写短评"></textarea>
+    </div>
+    
+    <div class="my-car">
+      <label for="my-car">我的car：</label>
+      <span class="selHid">
+        <span class="selBg">
+          <select name="my-car" id="my-car">
+            <option value="宾利">宾利</option>
+            <option value="五菱">五菱</option>
+            <option value="萨博" selected>萨博</option>
+            <option value="宝马">宝马</option>
+            <option value="大众">大众</option>
+          </select>
+        </span>
+      </span>
+        <input type="submit" value="提交">
+    </div>
+  </from>
+</body>
+</html>
