@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>7_3</title>
+  <style>
+  .block-center {
+    border: 1px solid red;
+    width: 200px;
+    margin: 0 auto;
+  }
+  .inline-center {
+    border: 1px solid yellow;
+    text-align: center;
+  }
+  #inline-block {
+    display :inline-block;
+  }
+  .inline-block-center {
+    /*可以*/
+    border: 1px solid pink;
+    text-align: center;
+  }
+  /*通过给父元素设置 float，然后给父元素设置 position:relative 和 left:50%，
+  子元素设置 position:relative 和 left:-50% 来实现水平居中。*/
+  .container {
+    float: left;
+    position: relative;
+    left: 50%;
+  }
+  .ift-center {
+    position: relative;
+    left: -50%;
+    border: 1px solid red;
+  }
+  </style>
+</head>
+<body>
+<div class="block-center">
+  块级元素居中居中居中居中
+</div>
+<div class="inline-center">
+  <span>
+    行内元素居中
+  </span>
+</div>
+<div class="inline-block-center">
+  <div id="inline-block">
+    行内块居中
+  </div>
+</div>
+<p>
+  
+</p>
+<div class="container">
+  <div class="ift-center">
+    不定块居中的一种方法
+  </div>
+</div>
+</body>
+</html>
