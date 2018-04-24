@@ -1,0 +1,121 @@
+/*css reset*/
+* {
+  padding: 0;
+  margin:  0;
+}
+ul {
+  list-style-type: none;
+}
+/*css common*/
+.clearfix::after {
+  content: '';
+  display: block;
+  clear: both;
+}
+/*css main*/
+.cover {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: #21373d;
+}
+
+.musicbox {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 16px;
+  width: 340px;
+}
+.music-panel {
+  position: relative;
+  border : 1px solid #76dba3;
+  /*为下面绝对定位的进度条控制留下空间*/
+  padding-bottom: 40px;
+  box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.1), 0px 2px 10px rgba(0,0,0,0.05);
+  background-color: rgba(255, 255, 255, 0.9);
+}
+.music .music-picture {
+  float: left;
+  /*确保每张图片大小保持一致*/
+  width: 100px;
+  height: 100px;
+  margin-left: 10px;
+  margin-top: 4px;
+  background: gray;
+
+}
+.music .info {
+  float: left;
+  padding: 20px;
+  text-align: left; 
+}
+.info .title{
+  width: 160px;
+  overflow: hidden;
+}
+.progress {
+  position: absolute;
+  left: 0;
+  bottom: 10px;
+  width: 100%;
+  font-size: 18px;
+}
+/*类似三栏布局 左 右 左*/
+.progress .control {
+  float: left;
+  width: 20%;
+}
+.progress .bar {
+  float: left;
+  width: 60%;
+  cursor: pointer;
+}
+.progress .time {
+  float: right;
+  width: 14%;
+}
+.control .back,
+.control .play,
+.control .forward{
+  width: 33%;
+  padding-left: 4px;
+    /*设置user-select 为none 就解决了 按按钮时产生的文本框*/
+    user-select: none;
+}
+.control .forward{
+  /*浮动起来，将不会受到播放按钮状态切换时候，产生的宽度变化*/
+  float: right;
+}
+.bar .progress-total {
+  width: 60%;
+  height: 3px;
+  background: rgba(0, 0, 0,0.2);
+  position: absolute;
+  bottom: 50%;
+}
+.bar .progress-now {
+  width: 0;
+  height: 3px;
+  background: #ee8a87;
+}
+
+.music-list {
+  background: gray;
+  width: 340px;
+  height: 100px;
+  position: absolute;
+}
+.music-list li {
+  margin: 2px;
+  padding: 2px 0 0 20px;
+  background: #856d72;
+  cursor: pointer;
+}
+.music-list .music-current-play {
+  background-color: navy;
+}
+
+
+

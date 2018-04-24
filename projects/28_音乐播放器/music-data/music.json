@@ -1,0 +1,26 @@
+[
+  {
+    "src" : "../music/Yell.mp3",
+    "title": "YELL",
+    "auther": "Naomile",
+    "img": "../images/yell.jpg"
+  },
+  {
+    "src" : "../music/ありがとう….mp3",
+    "title": "ありがとう…",
+    "auther": "KOKIA",
+    "img": "../images/ありがとう….jpg"
+  },
+  {
+    "src" : "../music/星の奏でる歌.mp3",
+    "title": "星の奏でる歌",
+    "auther": "潘めぐみ",
+    "img": "../images/星の奏でる歌.jpg"
+  },
+  {
+    "src" : "../music/紫雨UNITED まさかのアリス突撃编.mp3",
+    "title": "紫雨UNITED まさかのアリス突撃编",
+    "auther": "岩杉夏 / イザベル",
+    "img": "../images/岩杉夏,イザベル,あゆ - 紫雨UNITED まさかのアリス突撃编.jpg"
+  }
+]
