@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>homework-12-3</title>
+	<style>
+	.container {
+		width: 200px;
+		height: 100px;
+		margin: 50px; 
+		border: 1px solid gray;
+		position: relative;
+		
+		
+	}
+
+	.tr-1::before {
+		content: "";
+		display: block;
+		border: 10px solid #fff;
+		border-top:  10px solid gray;
+		border-left: 10px solid gray;
+		position: absolute;
+		top: -10px;
+		left: 20px;
+		transform:rotate(45deg); 
+	}
+
+	.tr-2::before {
+		content: "";
+		display: block;
+		border: 10px solid #fff;
+		border-top: 10px solid red;
+		border-left: 10px solid red;
+		position: absolute;
+		top: 0;
+		right: 0;
+		transform: rotate(90deg);
+	}
+
+	.tr-3::before {
+		content: "";
+		display: block;
+		padding: 9px;
+		border-top:  1px solid gray;
+		border-left: 1px solid gray;
+		background-color: #fff;
+		position: absolute;
+		top: -10px;
+		left: 20px;
+		transform:rotate(45deg); 
+	}	
+	</style>
+</head>
+<body>
+  <div class="container tr-1"></div>
+  <div class="container tr-2"></div>
+  <div class="container tr-3"></div>
+</body>
+</html>

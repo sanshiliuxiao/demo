@@ -1,0 +1,42 @@
+.layout {
+  background : #fff;
+  
+}
+.clearfix:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+.mod-tab {
+  margin-top: 20px;s
+}
+.nav .tab{
+  float: left;
+  width: 40px;
+  height: 30px;
+  padding: 3px;
+  background: #ccc;
+  border-left: 1px solid gray;
+  border-top: 1px solid gray;
+  cursor: pointer;
+  user-select: none;
+}
+.nav .tab:last-child {
+  border-right: 1px solid gray;
+}
+.nav .tab.active {
+  background: #fff;
+}
+.mod-tab .content {
+  height: 240px;
+}
+.content .panel {
+  display:none;
+}
+.content .panel.active {
+  display: block;
+  width : 200px;
+  height: 180px;
+  padding: 20px;
+  border: 1px solid gray;
+}
