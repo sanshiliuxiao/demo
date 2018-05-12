@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>豆瓣电影获取</title>
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_658320_floa0vmoj8r27qfr.css">
+  <link rel="stylesheet" href="main.css">
+</head>
+<body>
+  <main>
+    <section>
+      <div id="top250">
+      </div>
+      <div class="loading">
+        <span class="iconfont icon-loading"></span>
+      </div>
+    </section>
+    <section>
+      <div id="beimei">
+      </div>
+      <div class="loading">
+        <span class="iconfont icon-loading"></span>
+      </div>
+    </section>
+    <section>
+      <div id="search">
+        <div class="search-submit">
+          <input type="text">
+          <button>搜索</button>
+        </div>
+
+        <div class="search-result"></div>
+      </div>
+      <div class="loading">
+        <span class="iconfont icon-loading"></span>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <div class="active"><span class="iconfont icon-paiming"></span><span>250</span></div>
+    <div><span class="iconfont icon-beimei"></span><span>北美</span></div>
+    <div><span class="iconfont icon-sousuo"></span><span>搜索</span></div>
+  </footer>
+
+  <script src="https://cdn.bootcss.com/jquery/2.2.2/jquery.js"></script>
+  <script src="main.js"></script>
+  <!--
+  <script>
+    $('footer>div').click(function(){
+      var index = $(this).index();
+      /*所有的section隐藏 当前对应的section出现*/
+      $('section').hide().eq(index).fadeIn();
+      /*为自己添加active 为其他兄弟移除*/
+      $(this).addClass('active').siblings().removeClass('active');
+    });
+
+    var index = 0 ;
+    /*加锁*/
+    var isLoading = false;
+    function start() {
+      if (isLoading) return ;
+      isLoading = true;
+      $('.loading').show();
+      $.ajax({
+        url: 'http://api.douban.com/v2/movie/top250',
+        type: 'GET',
+        data: {
+          start: index,
+          count: 20
+        },
+        dataType: 'jsonp'
+      }).done(function(ret){
+        console.log(ret);
+        index += 20;
+      }).fail(function(){
+        console.log('erroe ...');
+      }).always(function(){
+        isLoading = false;
+        $('.loading').hide();
+      })
+    }
+    //start();
+    /*监测main元素滚动，
+    判断是否到达底部
+    section内容块的全部高度 main的滚动距离， main的高度*/
+
+    /*节流*/
+    var clock;
+    $('main').scroll(function(){
+      if (clock) {
+        clearTimeout(clock);
+      }
+      c lock = setTimeout(function(){
+        if ($('section').eq(0).height()-10 <= $('main').scrollTop()+$('main').height) {
+          start();
+        }
+      }, 300);
+    });
+  </script>
+  -->
+</body>
+</html>

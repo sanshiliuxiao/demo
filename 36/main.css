@@ -1,0 +1,119 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+a {
+  text-decoration: none;
+}
+html,body {
+  height: 100%;
+}
+body {
+  font-size: 12px;
+  line-height: 1.2;
+  background: #fff;
+  position: relative;
+}
+main {
+  height: calc(100vh - 50px);
+
+}
+main section {
+  height: 100%;
+  display: none;
+  overflow: scroll;
+  -webkit-overflow-scrolling: touch;
+}
+main section:first-child {
+  display: block;
+}
+section .item {
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
+section .search-submit {
+  width: 100%;
+  text-align: center;
+  margin: 20px 0;
+
+}
+section input {
+  width: 60%;
+  height: 20px;
+  border: 1px solid blue;
+  border-radius: 5px;
+  padding-left: 20px;
+}
+section button {
+  width: 50px;
+  outline: none;
+  border: 1px solid blue;
+  color: blue;
+  border-radius: 5px;
+  margin-left: 10px;
+}
+sectioin button {
+  background: red;
+}
+.item>a{
+  display: flex;
+}
+.item .cover,
+.item .cover img {
+  width: 70px;
+}
+.item .detail {
+  flex-grow: 1;
+  padding-left: 10px;
+}
+.item .detail h1 {
+  font-size: 16px;
+}
+.item .detail .extra {
+  color: #999;
+  margin-top: 4px;
+}
+.item .detail .score {
+  color: #ff5722;
+}
+
+/**/
+.loading {
+  text-align: center;
+  padding-top: 10px;
+  display: none;
+  
+}
+.loading>.iconfont {
+  font-size: 30px !important;
+  display: inline-block;
+  animation: 1s rotate linear infinite;
+}
+@keyframes rotate {
+  0% {transform: rotate(0deg);}
+  100% {transform: rotate(360deg);}
+
+}
+/*底部*/
+footer {
+  position: absolute;
+  bottom: 0;
+  height: 50px;
+  width: 100%;
+  border: 1px solid #ccc;
+  display: flex;
+}
+footer>div {
+  flex-grow: 1;
+  text-align: center;
+}
+footer>div>span {
+
+  display: block;
+  padding-top: 5px;
+}
+footer>div.active {
+  color: #ff5722;
+}
