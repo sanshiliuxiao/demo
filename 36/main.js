@@ -193,7 +193,6 @@ var search = {
       callback&&callback(ret);
     }).fail(function(){
       console.log('数据异常');
-    }).catch(function(){
       if (e.statusText == 'timeout'){
         _this.$search.nextAll('.loading').hide();
         console.log('超时了');
