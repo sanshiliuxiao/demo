@@ -76,7 +76,7 @@ var top250 = {
     _this.$elem_top.nextAll('.loading').show();
     // 发送ajax请求
     $.ajax({
-      url: 'http://api.douban.com/v2/movie/top250',
+      url: 'https://api.douban.com/v2/movie/top250',
       data: {
         start: _this._index || 0,
       },
@@ -119,7 +119,7 @@ var usBox = {
     var _this = this;
     _this.$elem_us.nextAll('.loading').show();
     $.ajax({
-      url: 'http://api.douban.com/v2/movie/us_box',
+      url: 'https://api.douban.com/v2/movie/us_box',
       data: {
         start: _this._index || 0,
       },
@@ -176,7 +176,7 @@ var search = {
     var _this = this;
     _this.$search.nextAll('.loading').show();
     $.ajax({
-      url: 'http://api.douban.com/v2/movie/search',
+      url: 'https://api.douban.com/v2/movie/search',
       timeout: 3000,
       data: {
         q: keyword,
