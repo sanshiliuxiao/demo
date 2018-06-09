@@ -66,15 +66,14 @@
 
   <script>
     var container = document.querySelector('.container');
-    var containerHeight = window.getComputedStyle(container).getPropertyValue('height');
-    containerHeight = parseInt( containerHeight.slice(0, containerHeight.length-2) );
+    var containerHeight = container.clientHeight; // 当前容器视口高度 ，就是看的见的部分 
     console.log(containerHeight);
 
     container.addEventListener('scroll', function(){
       throttle(show);
     })
     function show() {
-      var imgAllNode = document.querySelectorAll('img[isLoad="0"]');
+      var imgAllNode = document.querySelectorAll('img[isLoad="0"]'); // 选择未被加载过的图片
      console.log(imgAllNode);
       imgAllNode.forEach(function(item){
         if(isShow(item)){
@@ -83,15 +82,16 @@
       })
     }
     function isShow(node){
-      var containerScrolllTop = container.scrollTop;
-      var nodeOffsetTop = node.offsetTop ;
+      var containerScrolllTop = container.scrollTop; // 容器的滚动距离
+      var nodeOffsetTop = node.offsetTop ;  // 当前元素相对于其父容器的绝对距离 
       console.log( containerScrolllTop,containerHeight, nodeOffsetTop);
       return containerHeight + containerScrolllTop >   nodeOffsetTop;
     }
     function loadImg(node) {
       node.setAttribute('src', node.getAttribute('date-src'));
-      node.setAttribute('isLoad', '1');
+      node.setAttribute('isLoad', '1'); // 标志已经加载过，不必重复判断
     }
+
     // 函数节流 
     function throttle(method, context) {
       clearTimeout(method.tId);
@@ -100,6 +100,7 @@
       },500);
     }
 
+    // 第一次载入时，做判断
     function start() {
       show()  
     }
