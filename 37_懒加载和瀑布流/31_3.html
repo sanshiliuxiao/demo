@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+ <style>
+    .warpper {
+      max-width: 600px;
+      margin:0 auto;
+      position: relative;
+    }
+    .warpper img {
+      position: absolute;
+      width: 100px;
+      margin: 10px 5px;
+    }
+ </style>
+</head>
+<body>
+<div class="warpper">
+  <img src="./imgs/1.jpg" alt="1">
+  <img src="./imgs/2.jpg" alt="2">
+  <img src="./imgs/3.jpg" alt="3">
+  <img src="./imgs/4.jpg" alt="4">
+  <img src="./imgs/5.jpg" alt="5">
+  <img src="./imgs/6.jpg" alt="6">
+  <img src="./imgs/7.jpg" alt="7">
+  <img src="./imgs/8.jpg" alt="8">
+  <img src="./imgs/9.jpg" alt="9">
+  <img src="./imgs/10.jpg" alt="10">
+  <img src="./imgs/11.jpg" alt="11">
+  <img src="./imgs/12.jpg" alt="12">
+  <img src="./imgs/13.jpg" alt="13">
+  <img src="./imgs/14.jpg" alt="14">
+  <img src="./imgs/15.jpg" alt="15">
+  <img src="./imgs/16.jpg" alt="16">
+  <img src="./imgs/17.jpg" alt="17">
+  <img src="./imgs/18.jpg" alt="18">
+  <img src="./imgs/19.jpg" alt="19">
+  <img src="./imgs/20.jpg" alt="20">
+</div>
+  <script src="./jquery3.js"></script>
+  <script>
+    var colCount;
+    var colHeightArray = [];
+    var imgWidth = $('.warpper img').outerWidth(true);
+
+    colCount = Math.floor( $('.warpper').width()/$('.warpper img').outerWidth(true) );
+    for (var i=0; i<colCount; ++i) {
+      colHeightArray[i] = 0;
+    }
+
+    console.log(colCount);
+    $('.warpper img').on('load', function(){
+      var minValue = colHeightArray[0];
+      var minIndex = 0;
+      
+      for (var i=0; i<colCount; ++i) {
+        if (colHeightArray[i]< minValue ){
+          minValue = colHeightArray[i];
+          minIndex = i ;
+        }
+      }
+      console.log(minIndex, minValue, $(this).width(), $(this).height());
+      $(this).css({
+        left: minIndex * imgWidth,
+        top: minValue
+      })
+      colHeightArray[minIndex] += $(this).outerHeight(true);
+    })
+  </script>
+</body>
+</html>
