@@ -70,6 +70,41 @@
       })
       colHeightArray[minIndex] += $(this).outerHeight(true);
     })
+
+    window.addEventListener('resize', function(){
+      throttle(layout);
+     
+    })
+
+        // 函数节流 
+    function throttle(method, context) {
+      clearTimeout(method.tId);
+      method.tId = setTimeout(function(){
+        method.call(context);
+      },500);
+    }
+
+    function layout(){
+      var colCount;
+      var colHeightArray = [];
+      var imgWidth = $('.warpper img').outerWidth(true);
+
+      colCount = Math.floor( $('.warpper').width()/$('.warpper img').outerWidth(true) );
+      for (var i=0; i<colCount; ++i) {
+        colHeightArray[i] = 0;
+      }
+      
+      $('.warpper img').each(function(){
+        var minValue = Math.min.apply(null, colHeightArray);
+        minIndex = colHeightArray.indexOf(minValue);
+        $(this).css({
+          left : minIndex*$(this).outerWidth(true),
+          top: colHeightArray[minIndex]
+        })
+        colHeightArray[minIndex] += $(this).outerHeight(true);
+        minValue = Math.min.apply(null, colHeightArray);
+      })
+    }
   </script>
 </body>
 </html>
