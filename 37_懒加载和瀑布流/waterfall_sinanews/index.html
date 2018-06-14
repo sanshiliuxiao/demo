@@ -84,7 +84,7 @@
       <id id="loading-logo"></id>
     </div>
   </div>
-  <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script src="jquery.js"></script>
   <script>
     var curPage = 1,
         perPageCount = 15,
@@ -145,7 +145,7 @@
         var $node = getNode(item);
         $node.find('img').load(function(){
           $('#pic-ct').append($node);
-          console.log($node)
+          //console.log($node)
           waterFallPlace($node);
         })
       })
