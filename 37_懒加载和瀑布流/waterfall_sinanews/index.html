@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>新闻页面</title>
+  <style>
+      html,body,ul,li,p,div{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      ul,li{
+        list-style: none;
+      }
+      #wrap{
+        max-width: 1200px;
+        margin: 0 auto;
+        position: relative;
+      }
+      .clearfix:after{
+        content: '';
+        display: block;
+        clear: both;
+      }
+      #pic-ct{
+        position: relative;
+      }
+      #pic-ct .item{
+        position: absolute;
+        padding: 0 0 10px 0;
+        width: 280px;
+        margin: 10px;
+        border: 1px solid #DFDFDF;
+        background: #FFF;
+        opacity: 0;
+        transition: all .8s;
+      }
+      #pic-ct .item img{
+          margin: 10px;
+          width: 260px;
+      }
+      #pic-ct .item .header{
+        height: 25px;
+          margin: 0 12px;
+          border-bottom: 1px solid #DBDBDB;
+      }
+      #pic-ct .desp{
+        font-size: 12px;
+        line-height: 1.8;
+        margin: 10px 15px 0;
+        color: #777371;
+      }
+      #load{
+        height: 10px;
+        opacity: 0;
+      }
+      .hide{
+        display: none;
+      }
+      #loading-logo {
+        background-image: url('loading.gif');
+        width: 100px;
+        height: 100px;
+        background-size: 100% 100%;
+        background-color: rbga(255,255,255,0);
+        position: fixed;
+        top: 80%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        opacity: 0;
+      }
+      
+  </style>
+</head>
+<body>
+  <div id="wrap">
+    <div class="ct-waterfall">
+      <ul id="pic-ct", class="clearfix">
+        <li class="item hide"></li>
+      </ul>
+      <div id="load"></div>
+      <id id="loading-logo"></id>
+    </div>
+  </div>
+  <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>
+    var curPage = 1,
+        perPageCount = 15,
+
+        isDataArrive = true;
+        nodeWidth = $('.item').outerWidth(true),
+        colSumHeight = [],
+        colNum = parseInt($('#pic-ct').width() / nodeWidth);
+    for (var i=0; i<colNum; ++i) colSumHeight.push(0);
+
+    checkShow()
+    function checkShow(){
+      if (isShow($('#load'))) {
+        loadAndPlace();
+      } 
+    }
+
+    function isShow($el) {
+
+      var scrollH = $(window).scrollTop(),
+          winH = $(window).height(),
+          top = $el.offset().top;
+      
+      return (top < winH + scrollH) ? true : false;
+    }
+
+
+    function loadAndPlace(){
+      // 发送ajax请求
+      $.ajax({
+        url: 'http://platform.sina.com.cn/slide/album_tech',
+        dataType: 'jsonp',
+        jsonp: 'jsoncallback',
+        data: {
+          app_key: '1271687855',
+          page: curPage,
+          num: perPageCount
+        }
+      }).done(function(ret){
+        if(ret && ret.status && ret.status.code ==='0') {
+          curPage++;
+          isDataArrive = true;  
+          place(ret.data) // 拿到数据，进行处理
+
+        }else {
+          console.log('get error data');
+        }
+      })
+      isDataArrive = false
+    }
+    
+    function place(data) {
+      $('#loading-logo').css({
+            opacity: 1
+      })
+
+      $.each(data, function(idx, item){
+        var $node = getNode(item);
+        $node.find('img').load(function(){
+          $('#pic-ct').append($node);
+          console.log($node)
+          waterFallPlace($node);
+        })
+      })
+      setTimeout(() => {
+        $('#loading-logo').css({
+            opacity: 0
+      })
+      }, 500);
+
+    } 
+    function waterFallPlace($nodes){
+      $nodes.each(function(){
+        var $cur = $(this),
+            idx = 0,
+            minSumHeight = colSumHeight[0];
+        for(var i=0; i<colSumHeight.length; ++i){
+          if (colSumHeight[i] < minSumHeight){
+            idx = i;
+            minSumHeight = colSumHeight[i];
+          }
+        }
+        $cur.css({
+          left: nodeWidth*idx,
+          top: minSumHeight,
+          opacity: 1
+        });
+
+        colSumHeight[idx] += $cur.outerHeight(true);
+        $('#pic-ct').height(Math.max.apply(null, colSumHeight));
+      })
+    }
+    function getNode(item) {
+      var tpl = ''
+      tpl += '<li class="item">';
+      tpl += ' <a href="'+ item.url +'" class="link"><img src="' + item.img_url + '" alt=""></a>';
+      tpl += ' <h4 class="header">'+ item.short_name +'</h4>';
+      tpl += '<p class="desp">'+item.short_intro+'</p>';
+      tpl += '</li>';
+      return $(tpl)
+    }
+
+    // 函数节流
+    function throttle(method, context) {
+     clearTimeout(method.tId);
+     method.tId = setTimeout(function(){
+         method.call(context);
+     },500);
+    }
+
+    // 窗口滚动事件
+    $(window).scroll(function(){
+      if (!isDataArrive) return
+
+      throttle(checkShow)
+    })
+    // 改变窗口大小重新布局
+    $(window).resize(function(){
+      throttle(resizeLayout);
+      throttle(checkShow)
+    })
+    function resizeLayout(){
+      var colCount = Math.floor(  $('#wrap').width()/$('.item.hide').outerWidth(true) ),
+          colHeightArray = [];
+      for (var i=0; i<colCount; ++i) {
+        colHeightArray[i] = 0;
+      }
+      $('.item').each(function(){
+        var minValue = Math.min.apply(null, colHeightArray);
+        minIndex = colHeightArray.indexOf(minValue);
+        $(this).css({
+          left : minIndex* nodeWidth,
+          top: colHeightArray[minIndex]
+        })
+        colHeightArray[minIndex] += $(this).outerHeight(true);
+      })
+
+      // 将局部变量的值，传入 全局变量中
+      colNum = colCount;
+      colSumHeight = colHeightArray;
+    }
+
+  </script>
+</body>
+</html>
