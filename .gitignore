@@ -1,0 +1,17 @@
+.DS_Store
+node_modules/
+npm-debug.log
+yarn-error.log
+vue-test/
+
+# Editor directories and files
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
