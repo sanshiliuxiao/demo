@@ -27,7 +27,6 @@ html,body, section, .layout {
 
 .layout {
   min-width: 600px;
-  padding: 20vh 20vw 0 10vw;
   display: flex;
   flex-direction: column;
 }
@@ -47,13 +46,16 @@ html,body, section, .layout {
   }
 }
 #main {
+  padding: 20vh 20vw 0 10vw;
   /*1vh等于高度的1%*/
   flex: 1;
   display: flex; 
 }
 #footer {
+  padding: 0 20vw 0 20vw;
   display: flex;
   height: 20vh;
+  position: relative;
 }
 #aside {
   display: flex;
@@ -146,10 +148,35 @@ html,body, section, .layout {
 #detail .icons *{
   color: aquamarine;
 }
+
+#footer .iconfont {
+  position: absolute;
+  font-size: 6vh;
+  color: rgba(133, 130, 119,0.8);
+  opacity: 0;
+  transition: all 1s;
+}
+
+#footer:hover .iconfont {
+  opacity: 1;
+}
+#footer .iconfont:hover {
+  color: rgba(255, 255, 255,0.8);
+} 
+#footer .iconfont:nth-child(1) {
+  left: 10vw;
+  top: 20%
+}
+#footer .iconfont:nth-child(2) {
+  right: 10vw;
+  top: 20%
+}
+
 #music-list {
   display: flex;
   width: 100%;
   height: 100%;
+  overflow: hidden;
 }
 #music-list .cover{
   margin: 2vh;
@@ -166,7 +193,6 @@ html,body, section, .layout {
 }
 #music-list .cover:hover {
  box-shadow: 0 0 .5vh .5vh rgba(255,255,255,0.8);
-
 }
 #music-list figure {
   background-size: cover;
