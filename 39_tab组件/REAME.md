@@ -31,4 +31,4 @@ tab2.init();
 
 
 
-[demo演示地址](./sample.html)
+[demo演示地址](./demo/39_tab组件/sample.html)
