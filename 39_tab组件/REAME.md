@@ -9,11 +9,14 @@ div.tab-container>ul.tab-header>li*number^.tab-body>div*number
 css 变化
 
 ```css
+/* 自行编写*/
 .tab-header .active {
     /*  */
+    background: blue
 }
 .tab-body .active {
     /*  */
+    display: block;
 }
 ```
 
@@ -29,6 +32,8 @@ tab2.init();
 // ...
 ```
 
+### 功能
 
+每一个teb，都是独立的，但功能相同。点击相应的tab-header项，tab-body的内容也相应的发生改变。
 
-[demo演示地址](./demo/39_tab组件/sample.html)
+[demo演示地址](https://sanshiliuxiao.github.io/demo/39_tab%E7%BB%84%E4%BB%B6/sample.html)
