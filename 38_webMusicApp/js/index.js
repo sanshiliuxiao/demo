@@ -72,7 +72,7 @@ var Footer = {
   },
   render: function(){
     var _this = this;
-    $.getJSON('http://api.jirengu.com/fm/getChannels.php').done(function(ret){
+    $.getJSON('//api.jirengu.com/fm/getChannels.php').done(function(ret){
       _this.renderFooter(ret.channels);
     }).fail(function(){
     })
@@ -177,7 +177,7 @@ var Fm = {
     this.audio.src = this.song.url;
     $('#bg').css('background-image', 'url('+ this.song.picture+ ')');
     this.$container.find('#aside figure').css('background-image', 'url('+this.song.picture+')')
-    if (this.channelId == null || this.song.title == null || this.song.artist == null){
+    if (this.song== null || this.song.title == null || this.song.artist == null){
       console.log('哦吼, 有问题哦,再点一次啦');
       this.$container.find('#music-infor .music-name').text('哦吼, 有问题哦');
       this.$container.find('#music-infor .tags').text('(*_*)');
