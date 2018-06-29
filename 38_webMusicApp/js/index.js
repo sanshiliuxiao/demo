@@ -72,13 +72,20 @@ var Footer = {
   },
   render: function(){
     var _this = this;
-    $.getJSON('//api.jirengu.com/fm/getChannels.php').done(function(ret){
+    $.getJSON('https://jirenguapi.applinzi.com/fm/getChannels.php').done(function(ret){
       _this.renderFooter(ret.channels);
     }).fail(function(){
     })
   },
   renderFooter: function(channels){
     var html = '';
+    channels.unshift({
+      channel_id: 0,
+      name: '我的最爱',
+      cover_small: 'http://cloud.hunger-valley.com/17-10-24/1906806.jpg-small',
+      cover_middle: 'http://cloud.hunger-valley.com/17-10-24/1906806.jpg-middle',
+      cover_big: 'http://cloud.hunger-valley.com/17-10-24/1906806.jpg-big',
+    })
     channels.forEach(function(channel){
       html += '<div class="cover" data-channel-id='+ channel.channel_id+ ' data-channel-tags='+  channel.name  + '>' 
             + '<div class= "image" style="background-image:url('+ channel.cover_small+');"></div>'
@@ -101,14 +108,17 @@ var Footer = {
 var Fm = {
   init: function(){
     this.channelId = null;
-    this.song = null;
+    this.channelName = null;
     this.$container = $('#main');
     this.$actions = this.$container.find('#actions');
     this.$areaBar = this.$container.find('.area-bar');
+    this.$social = this.$container.find('.social-function');
+    this.song = null;
+    this.statusClock = null;
+    this.collections = this.loadFromLocal();
     this.audio = new Audio();
     this.audio.autoplay = true;
     this.audio.volume = 0.4;
-    this.statusClock = null;
     this.bind();
   },
   bind: function(){
@@ -134,13 +144,25 @@ var Fm = {
           }, 200);
 
       }
-    })
+    });
     // 下一曲
     this.$actions.find('.btn-next').on('click', function(){
       setTimeout(() => {
         _this.loadMusic();
       }, 200);
 
+    });
+    // 收藏 利用html5的本地存储localStorage
+    this.$actions.find('.btn-like').on('click', function(){
+      var $btn = $(this);
+      if ($btn.hasClass('active')) {
+        $btn.removeClass('active');
+        delete _this.collections[_this.song.sid];
+      } else {
+        $btn.addClass('active');
+        _this.collections[_this.song.sid] = _this.song;
+      }
+      _this.saveToLocal();
     })
     // 进度条拖动
     this.$areaBar.find('.bar').on('click', function(e){
@@ -149,6 +171,10 @@ var Fm = {
       _this.audio.currentTime = _this.audio.duration * precent;
       _this.updataStatus();
     });
+    // 其他功能 下载 分享 评论
+    this.$social.on('click', 'li', function(){
+      alert('暂不支持呢');
+    })
     // 音乐播放监听，更新状态
     this.audio.addEventListener('play', function(){
       clearInterval(_this.statusClock);
@@ -161,19 +187,23 @@ var Fm = {
     this.audio.addEventListener('pause', function(){
       clearInterval(_this.statusClock);
     })
+    // 音乐结束监听
     this.audio.addEventListener('ended', function(){
       _this.loadMusic();
     })
   },
   loadMusic(){
     var _this = this;
-    $.getJSON('//jirenguapi.applinzi.com/fm/getSong.php', {channel: this.channelId}).done(function(ret){
-      _this.song = ret['song'][0];
-      _this.setMusic();
-      _this.loadLyric();
-    })
+    if (this.channelId === '0') {
+      _this.loadCollection();
+    }else {
+      $.getJSON('//jirenguapi.applinzi.com/fm/getSong.php', {channel: this.channelId}).done(function(ret){
+        _this.setMusic(ret['song'][0]);
+      })
+    }
   },
-  setMusic: function(){
+  setMusic: function(song){
+    this.song = song;
     this.audio.src = this.song.url;
     $('#bg').css('background-image', 'url('+ this.song.picture+ ')');
     this.$container.find('#aside figure').css('background-image', 'url('+this.song.picture+')')
@@ -183,11 +213,17 @@ var Fm = {
       this.$container.find('#music-infor .tags').text('(*_*)');
       this.$container.find('#music-infor .author').text('^_^');
     } else {
-      this.$container.find('#music-infor .music-name').text((this.song.title|| ' '));
-      this.$container.find('#music-infor .tags').text((this.channelTags|| ' '));
-      this.$container.find('#music-infor .author').text((this.song.artist|| ' '));
+      this.$container.find('#music-infor .music-name').text((this.song.title|| '^_^'));
+      this.$container.find('#music-infor .tags').text((this.channelTags|| '^_^'));
+      this.$container.find('#music-infor .author').text((this.song.artist|| '^_^'));
       this.$actions.find('.btn-play').removeClass('icon-play').addClass('icon-pause');
     }
+    if(this.collections[song.sid]){
+      this.$actions.find('.btn-like').addClass('active')
+    }else{
+      this.$actions.find('.btn-like').removeClass('active')
+    }
+    this.loadLyric();
   },
   loadLyric: function(){
     var _this = this;
@@ -217,6 +253,20 @@ var Fm = {
     if (line) {
       this.$container.find('.lyric p').text(line);
     }
+  },
+
+  loadFromLocal: function(){
+    return JSON.parse(localStorage['collections']|| '{}');
+  },
+  saveToLocal: function(){
+    localStorage['collections'] = JSON.stringify(this.collections)
+  },
+  loadCollection: function(){
+    var keyArray = Object.keys(this.collections)
+    if(keyArray.length === 0) return
+    var randomIndex = Math.floor(Math.random()* keyArray.length);
+    var randomSid = keyArray[randomIndex];
+    this.setMusic(this.collections[randomSid]);
   }
 }
 Fm.init();

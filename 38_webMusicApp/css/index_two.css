@@ -160,14 +160,14 @@ html,body, section, .layout {
   font-size: 1.6vw;
   color: rgba(255, 255,255, 0.8);
 }
-#detail .icons {
+#detail .social-function {
   display: flex;
   padding-top: 2vh;
   padding-bottom: 7vh;
   justify-content: space-between;
 
 }
-#detail .icons *{
+#detail .social-function *{
   color: aquamarine;
 }
 
