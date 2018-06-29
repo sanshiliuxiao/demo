@@ -72,7 +72,7 @@ var Footer = {
   },
   render: function(){
     var _this = this;
-    $.getJSON('//api.jirengu.com/fm/getChannels.php').done(function(ret){
+    $.getJSON('http://api.jirengu.com/fm/getChannels.php').done(function(ret){
       _this.renderFooter(ret.channels);
     }).fail(function(){
     })
