@@ -183,9 +183,9 @@ var Fm = {
       this.$container.find('#music-infor .tags').text('(*_*)');
       this.$container.find('#music-infor .author').text('^_^');
     } else {
-      this.$container.find('#music-infor .music-name').text(this.song.title);
-      this.$container.find('#music-infor .tags').text(this.channelTags);
-      this.$container.find('#music-infor .author').text(this.song.artist);
+      this.$container.find('#music-infor .music-name').text((this.song.title|| ' '));
+      this.$container.find('#music-infor .tags').text((this.channelTags|| ' '));
+      this.$container.find('#music-infor .author').text((this.song.artist|| ' '));
       this.$actions.find('.btn-play').removeClass('icon-play').addClass('icon-pause');
     }
   },
