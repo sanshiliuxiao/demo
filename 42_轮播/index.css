@@ -1,0 +1,111 @@
+html {
+  box-sizing: border-box;
+}
+*, *::before, *::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: inherit;
+}
+
+ul, li {
+  list-style-type: none;
+}
+
+.carousel {
+  width: 320px;
+  height: 180px;
+  overflow: hidden;
+  margin: 30px auto;
+  position: relative;
+}
+.carousel .img-ct {
+  position: absolute;
+  /*触发了BFC*/
+  overflow: hidden;
+}
+.carousel .img-ct>li {
+  float: left;
+}
+.carousel .img-ct img {
+  width: 320px;
+  height: 180px;
+}
+
+.carousel .arrow {
+  position: absolute;
+  top: 50%;
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 1px solid #fff;
+  line-height: 30px;
+  color: #fff;
+  text-align: center;
+  transform: translate(0, -50%);
+}
+.carousel .pre {
+  left: 10px;
+}
+.carousel .next {
+  right: 10px;
+}
+.carousel .pre:after {
+  content: '';
+  display: block;
+  width: 0;
+  height: 0;
+  border-right: 8px solid #fff;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  opacity: 0.5;
+  position: absolute;
+  top: 50%;
+  right: 50%;
+  transform: translate(50%, -50%);
+
+}
+.carousel .next:after {
+  content: '';
+  display: block;
+  width: 0;
+  height: 0;
+  border-left: 8px solid #fff;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  opacity: 0.5;
+  position: absolute;
+  top: 50%;
+  right: 50%;
+  transform: translate(50%, -50%);
+
+}
+.carousel .arrow:hover {
+  opacity: 0.8;
+}
+
+.carousel .bullet {
+  position: absolute;
+  left: 50%;
+  bottom: 10px;
+  width: 100%;
+  text-align: center;
+  transform: translate(-50%, 0);
+  user-select: none;
+}
+.carousel .bullet > li {
+  display: inline-block;
+  width: 40px;
+  height: 10px;
+  background: #fff;
+  border-radius: 10px;
+  transition: opacity 0.3s;
+  opacity: 0.6;
+}
+.carousel .bullet .active {
+  background: blue;
+  opacity: 0.8;
+}
+.carousel .bullet:hover li:not(:hover){
+  opacity: 0.3;
+}
