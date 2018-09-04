@@ -1,0 +1,75 @@
+*, *::after, *::before {
+  margin: 0; padding: 0; box-sizing: border-box;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+:root {
+  --bg-color: rgb(39, 174, 96);
+  --content-bg-color: white;
+  --text-color: rgb(39, 174, 96);
+  --color: white;
+}
+html, body, .layout {
+  height: 100%;
+}
+.layout {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: var(--bg-color);
+  transition: all 2s ease-out;
+}
+.content {
+  width: 600px;
+  padding: 20px 50px;
+  background: var(--content-bg-color);
+  border: 1PX solid rgb(39, 174, 96);
+  border-radius: 5px;
+  box-shadow: 0 0 5px 1px rgab(0,0,0,0.8);
+}
+#text {
+  text-align: center;
+  letter-spacing: 3px;
+  font-size: 20px;
+  color: var(--text-color);
+  word-break: break-all;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px;
+}
+.share > a {
+  display: inline-block;
+  text-align: center;
+  line-height: 40px;
+  width: 40px;
+  height: 40px;
+  border: 1px solid inherit;
+  border-radius: 2px;
+  background: var(--bg-color);
+}
+.share > a > i.iconfont {
+  font-size: 30px;
+  color: var(--color);
+}
+#new-quote {
+  padding: 0 20px;
+  border: 1px solid initial;
+  border-radius: 4px;
+  height: 40px;
+  line-height: 40px;
+  background: var(--bg-color);
+  color: var(--color);
+  cursor: pointer;
+  user-select: none;
+}
+#new-quote:hover {
+  opacity: 0.9;
+}
