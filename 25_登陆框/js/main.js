@@ -64,7 +64,7 @@ $('.modal-register form').addEventListener('submit', function(e){
   this.submit();
 })
 // 创建音乐对象
-var audio = new Audio('../music/bgm.mp3');
+var audio = new Audio('./music/bgm.mp3');
 audio.autoplay = true;
 audio.volume = 0.1;
 $('footer .btn').addEventListener('click', function(e){
